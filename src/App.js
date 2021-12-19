@@ -13,7 +13,7 @@ const initialContacts = [
   { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
 ];
 
-class App extends Component {
+export default class App extends Component {
   state = {
     contacts: [],
     filter: "",
@@ -31,13 +31,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem("contact"));
+    const contacts = JSON.parse(localStorage.getItem("contacts"));
     this.setState({contacts: contacts ?? initialContacts});
   }
 
   componentDidUpdate(props, prevState) {
     if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
@@ -69,5 +69,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
